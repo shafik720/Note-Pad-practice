@@ -108,6 +108,7 @@ body{
     padding-right: 10px;
 }
 
+
 .popup-box{
     background: rgba(0,0,0,0.4);
     position: fixed;
@@ -115,6 +116,7 @@ body{
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 2;
 }
 
 .popup-box .popup{
@@ -127,6 +129,7 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 3;
 }
 .popup .popup-header{
     display: flex;
@@ -158,4 +161,21 @@ body{
 .popup-body form textarea{
     height: 150px;
     resize: none;
+}
+.popup-body form button{
+    width: 100%;
+    height: 50px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background: #007ACC;
+    margin-bottom: 15px;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+}
+.popup-header i{
+    color: #ccc;
+    cursor: pointer;
 }
