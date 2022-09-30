@@ -27,10 +27,12 @@ body{
     align-items: center;
     flex-direction: column;
 }
-.add-box p {
+.add-box span {
     font-size: 18px;
     font-weight: 600;
     color: #007ACC;
+    display: block;
+    margin-top: 15px;
 }
 .add-icon {
     width: 70px;
@@ -41,4 +43,29 @@ body{
 .add-icon i{
     font-size: 25px;
     color: #007ACC;
+}
+
+.note-header span{
+    font-weight: 700;
+    font-size: 22px;
+    margin-top: 20px;
+    display: block;
+}
+
+.note-body p{
+    font-weight: 500;
+    color: #ccc;
+}
+.note-footer{
+    border-top: 2px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.note-footer span, .note-footer i{
+    padding: 15px 0;
+    display: block;
+}
+.note-footer i{
+    cursor: pointer;
 }
