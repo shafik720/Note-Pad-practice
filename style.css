@@ -83,7 +83,13 @@ body{
     box-shadow: 0 0 5px;
     border-radius: 5px;
     bottom: 20px;
-    right: 15px;
+    right: 10px;
+    transition: all 0.2s;
+    transform: scale(0);
+    transform-origin: bottom right;
+}
+.footer-icon:hover .menu{
+    transform: scale(1);
 }
 .footer-icon .menu div{
     display: flex;
