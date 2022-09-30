@@ -3,6 +3,9 @@
 body{
     font-family: 'Nunito', sans-serif ;
     background: #0a837f;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 .wrapper{
@@ -131,4 +134,28 @@ body{
     align-items: center;
     border-bottom: 2px solid #ccc;
     margin-bottom: 15px;
+}
+.form-title {
+    display: flex;
+    flex-direction: column;
+}
+.form-title label, .form-desc label, .popup-header p{
+    font-weight: 600;
+    font-size: 18px;
+}
+.popup-body form input, form textarea{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    height: 50px;
+    outline: none;
+    border: 2px solid grey;
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-size: 20px;
+}
+.popup-body form textarea{
+    height: 150px;
+    resize: none;
 }
