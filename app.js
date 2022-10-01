@@ -8,7 +8,7 @@ addBtn = document.getElementById('addBtn'),
 menu = document.querySelector('.menu'),
 addBoxTitle = document.getElementById('addBoxTitle')
 
-
+let isUpdate = false, updateId;
 
 let notes = JSON.parse(localStorage.getItem('notes2') || '[]');
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -33,6 +33,7 @@ addBox.addEventListener('click',(e)=>{
 
 closeIcon.addEventListener('click',()=>{
     popupBox.classList.remove('show');
+    isUpdate = false;
 })
 
 addBtn.addEventListener('click',e=>{
@@ -44,7 +45,12 @@ addBtn.addEventListener('click',e=>{
     let year = dateObj.getFullYear();
     if(noteTitle.value || noteDesc.value){
        noteObj = {title:noteTitle.value, desc:noteDesc.value, date:`${day} ${month} ${year}`};
-       notes.push(noteObj);
+       if(!isUpdate){
+        notes.push(noteObj);
+       }else if(isUpdate){
+        notes[updateId] = noteObj;
+       }
+       
        localStorage.setItem('notes2',JSON.stringify(notes));
        closeIcon.click();
     }
@@ -68,8 +74,8 @@ function showNotes(){
             <div class="footer-icon">
                 <i  onclick="showMenu(this)" class="fa-solid fa-ellipsis"></i>
                 <div class="menu">
-                    <div onclick="deleteNote(${index},'${note.title}','${note.desc}')"><i class="fa-regular fa-pen-to-square"></i>Edit</div>
-                    <div onclick="updateNote(${index})"><i class="fa-regular fa-pen-to-square"></i>Delete</div>
+                    <div onclick="updateNote(${index},'${note.title}','${note.desc}')"><i class="fa-regular fa-pen-to-square"></i>Edit</div>
+                    <div onclick="deleteNote(${index})"><i class="fa-regular fa-pen-to-square"></i>Delete</div>
                 </div>
             </div>                
         </div>
@@ -80,14 +86,17 @@ function showNotes(){
 }
 showNotes();
 
-function updateNote(number){
+function deleteNote(number){
     notes.splice(number,1);
     localStorage.setItem('notes2',JSON.stringify(notes));
     showNotes();
 }
-function deleteNote(number, title, description){
-    console.log(title, description);
+function updateNote(number, title, description){
+    isUpdate = true;
     addBox.click();
     addBoxTitle.innerText = 'Edit Your Note';
     addBtn.innerText = 'Update';
+    noteTitle.value = title;
+    noteDesc.value = description;
+    updateId = number;    
 }
