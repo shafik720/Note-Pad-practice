@@ -18,7 +18,8 @@ body{
 .wrapper .add-box, .square-box, .notes{
     background: white;
     padding: 10px 15px;
-    /* height: 200px; */
+    height: 250px;
+    overflow: auto;
     border-radius: 5px;
 }
 .add-box{
@@ -64,6 +65,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    bottom: 0;
 }
 .note-footer span, .note-footer i{
     padding: 15px 0;

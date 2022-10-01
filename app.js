@@ -87,6 +87,8 @@ function showNotes(){
 showNotes();
 
 function deleteNote(number){
+    let isConfirm = confirm('Are you sure ? You want to proceed ?');
+    if(!isConfirm){return}
     notes.splice(number,1);
     localStorage.setItem('notes2',JSON.stringify(notes));
     showNotes();
