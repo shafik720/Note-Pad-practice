@@ -23,6 +23,8 @@ function showMenu(any){
 
 addBox.addEventListener('click',(e)=>{
     popupBox.classList.add('show');
+    noteTitle.value = '';
+    noteDesc.value = '';
     // e.preventDefault();
 })
 
@@ -49,7 +51,7 @@ addBtn.addEventListener('click',e=>{
 
 function showNotes(){
     document.querySelectorAll('.notes').forEach(note=>note.remove());
-    notes.forEach(note=>{
+    notes.forEach((note, index)=>{
         let div = `
         <div class="notes">
         <div class="note-header">
@@ -64,7 +66,7 @@ function showNotes(){
                 <i  onclick="showMenu(this)" class="fa-solid fa-ellipsis"></i>
                 <div class="menu">
                     <div><i class="fa-regular fa-pen-to-square"></i>Edit</div>
-                    <div><i class="fa-regular fa-pen-to-square"></i>Delete</div>
+                    <div onclick="updateNote(${index})"><i class="fa-regular fa-pen-to-square"></i>Delete</div>
                 </div>
             </div>                
         </div>
@@ -74,3 +76,8 @@ function showNotes(){
     })
 }
 showNotes();
+function updateNote(number){
+    notes.splice(number,1);
+    localStorage.setItem('notes2',JSON.stringify(notes));
+    showNotes();
+}
