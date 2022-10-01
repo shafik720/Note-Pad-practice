@@ -91,7 +91,7 @@ body{
     transform: scale(0);
     transform-origin: bottom right;
 }
-.footer-icon:hover .menu{
+.footer-icon.show .menu{
     transform: scale(1);
 }
 .footer-icon .menu div{

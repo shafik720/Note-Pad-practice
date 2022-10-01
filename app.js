@@ -4,12 +4,22 @@ popupBox = document.querySelector('.popup-box'),
 closeIcon = popupBox.querySelector(".popup-header span i"),
 noteTitle = popupBox.querySelector('.form-title input'),
 noteDesc = popupBox.querySelector('.form-desc textarea'),
-addBtn = document.getElementById('addBtn')
+addBtn = document.getElementById('addBtn'),
+menu = document.querySelector('.menu')
+
 
 
 let notes = JSON.parse(localStorage.getItem('notes2') || '[]');
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
+function showMenu(any){
+    any.parentElement.classList.add('show');
+    document.addEventListener('click', e=>{
+        if(e.target != any){
+            any.parentElement.classList.remove('show');
+        }
+    })
+}
 
 addBox.addEventListener('click',(e)=>{
     popupBox.classList.add('show');
@@ -36,6 +46,7 @@ addBtn.addEventListener('click',e=>{
     showNotes();
 })
 
+
 function showNotes(){
     document.querySelectorAll('.notes').forEach(note=>note.remove());
     notes.forEach(note=>{
@@ -50,7 +61,7 @@ function showNotes(){
         <div class="note-footer">
             <span>${note.date}</span>
             <div class="footer-icon">
-                <i id="menuIcon" class="fa-solid fa-ellipsis"></i>
+                <i  onclick="showMenu(this)" class="fa-solid fa-ellipsis"></i>
                 <div class="menu">
                     <div><i class="fa-regular fa-pen-to-square"></i>Edit</div>
                     <div><i class="fa-regular fa-pen-to-square"></i>Delete</div>
