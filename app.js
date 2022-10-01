@@ -5,7 +5,8 @@ closeIcon = popupBox.querySelector(".popup-header span i"),
 noteTitle = popupBox.querySelector('.form-title input'),
 noteDesc = popupBox.querySelector('.form-desc textarea'),
 addBtn = document.getElementById('addBtn'),
-menu = document.querySelector('.menu')
+menu = document.querySelector('.menu'),
+addBoxTitle = document.getElementById('addBoxTitle')
 
 
 
@@ -25,6 +26,8 @@ addBox.addEventListener('click',(e)=>{
     popupBox.classList.add('show');
     noteTitle.value = '';
     noteDesc.value = '';
+    addBoxTitle.innerText = 'Add a New Note';
+    addBtn.innerText = 'Add Note';
     // e.preventDefault();
 })
 
@@ -65,7 +68,7 @@ function showNotes(){
             <div class="footer-icon">
                 <i  onclick="showMenu(this)" class="fa-solid fa-ellipsis"></i>
                 <div class="menu">
-                    <div><i class="fa-regular fa-pen-to-square"></i>Edit</div>
+                    <div onclick="deleteNote(${index},'${note.title}','${note.desc}')"><i class="fa-regular fa-pen-to-square"></i>Edit</div>
                     <div onclick="updateNote(${index})"><i class="fa-regular fa-pen-to-square"></i>Delete</div>
                 </div>
             </div>                
@@ -76,8 +79,15 @@ function showNotes(){
     })
 }
 showNotes();
+
 function updateNote(number){
     notes.splice(number,1);
     localStorage.setItem('notes2',JSON.stringify(notes));
     showNotes();
+}
+function deleteNote(number, title, description){
+    console.log(title, description);
+    addBox.click();
+    addBoxTitle.innerText = 'Edit Your Note';
+    addBtn.innerText = 'Update';
 }
