@@ -144,6 +144,9 @@ body{
     border-bottom: 2px solid #ccc;
     margin-bottom: 15px;
 }
+.popup-header span i:hover{
+    color: black;
+}
 .form-title {
     display: flex;
     flex-direction: column;
