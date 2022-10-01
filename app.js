@@ -64,10 +64,10 @@ function showNotes(){
         let div = `
         <div class="notes">
         <div class="note-header">
-            <span>${note.title}</span>
-        </div>
+            <span>${note.title}</span>            
         <div class="note-body">
-            <p>${note.desc}</p>
+        <p>${note.desc}</p>
+    </div>
         </div>
         <div class="note-footer">
             <span>${note.date}</span>

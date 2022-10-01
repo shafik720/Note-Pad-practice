@@ -15,12 +15,16 @@ body{
     gap: 25px;
 }
 
-.wrapper .add-box, .square-box, .notes{
+.wrapper .add-box, .notes{
     background: white;
     padding: 10px 15px;
     height: 250px;
-    overflow: auto;
     border-radius: 5px;
+}
+.notes{    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .add-box{
     cursor: pointer;
@@ -189,4 +193,9 @@ body{
 .popup-header i{
     color: #ccc;
     cursor: pointer;
+}
+
+.note-body{
+    max-height: 160px;
+    overflow-y: auto;
 }
