@@ -11,15 +11,17 @@ let notes = JSON.parse(localStorage.getItem('notes2') || '[]');
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 
-addBox.addEventListener('click',()=>{
+addBox.addEventListener('click',(e)=>{
     popupBox.classList.add('show');
+    // e.preventDefault();
 })
 
 closeIcon.addEventListener('click',()=>{
     popupBox.classList.remove('show');
 })
 
-addBtn.addEventListener('click',()=>{
+addBtn.addEventListener('click',e=>{
+    e.preventDefault();
     let noteObj;
     let dateObj = new Date();
     let day = dateObj.getDay();
@@ -29,12 +31,13 @@ addBtn.addEventListener('click',()=>{
        noteObj = {title:noteTitle.value, desc:noteDesc.value, date:`${day} ${month} ${year}`};
        notes.push(noteObj);
        localStorage.setItem('notes2',JSON.stringify(notes));
+       closeIcon.click();
     }
     showNotes();
-    closeIcon.click();
 })
 
 function showNotes(){
+    document.querySelectorAll('.notes').forEach(note=>note.remove());
     notes.forEach(note=>{
         let div = `
         <div class="notes">
